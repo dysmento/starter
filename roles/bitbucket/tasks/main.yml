@@ -16,3 +16,9 @@
     body_format: json
     status_code: 200, 400
     body: "{\"accountname\":\"{{ bitbucket_username }}\", \"label\":\"{{ ansible_hostname }}\", \"key\":\"{{ ssh_key.stdout }}\"}"
+
+- name: clone the donut repo
+  git: repo=git@bitbucket.org:inindca/donut.git dest=/Users/{{ ansible_user_id }}/dev/donut
+
+- name: clone the donut-common repo
+  git: repo=git@bitbucket.org:inindca/donut-common.git dest=/Users/{{ ansible_user_id }}/dev/donut-common

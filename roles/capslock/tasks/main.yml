@@ -1,7 +1,7 @@
-- shell: ioreg -n IOHIDKeyboard -r | grep -e 'class IOHIDKeyboard' -e VendorID\" -e ProductID | grep ProductID | grep -o \\d\\+
+- shell: ioreg -n IOHIDKeyboard -r | grep -e 'class IOHIDKeyboard' -e VendorID\" -e ProductID | grep ProductID | head -n 1 | grep -o \\d\\+
   register: product_id
 
-- shell: ioreg -n IOHIDKeyboard -r | grep -e 'class IOHIDKeyboard' -e VendorID\" -e ProductID | grep VendorID | grep -o \\d\\+
+- shell: ioreg -n IOHIDKeyboard -r | grep -e 'class IOHIDKeyboard' -e VendorID\" -e ProductID | grep VendorID | head -n 1 | grep -o \\d\\+
   register: vendor_id
 
 - shell: defaults -currentHost write -g com.apple.keyboard.modifiermapping.{{ vendor_id.stdout }}-{{ product_id.stdout }}-0 '<array><dict><key>HIDKeyboardModifierMappingDst</key><integer>2</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict></array>'
