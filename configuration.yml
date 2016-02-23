@@ -7,6 +7,12 @@
   - role: mackup
   - role: bitbucket
   - role: capslock
+  - role: loginitems
+  - role: purecloud
+  - role: maven
+  tasks:
+  - name: clone prezto to home directory
+    git: repo=https://github.com/sorin-ionescu/prezto.git recursive=yes dest=/Users/{{ ansible_user_id }}/.zprezto
 
 - hosts: all
   roles:

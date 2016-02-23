@@ -1,0 +1,48 @@
+<settings>
+    <servers>
+        <server>
+            <!-- this id should match the id of the repo server in pom.xml -->
+            <id>inin-snapshot</id>
+            <username>inin-developer</username>
+            <password>{{ inin_repo_dev_password }}</password>
+        </server>
+        <server>
+            <!-- this id should match the id of the repo server in pom.xml -->
+            <id>inin-release</id>
+            <username>inin-developer</username>
+            <password>{{ inin_repo_dev_password }}</password>
+        </server>
+        <server>
+            <!-- this id should match the id of the repo server in pom.xml -->
+            <id>thirdparty</id>
+            <username>inin-developer</username>
+            <password>{{ inin_repo_dev_password }}</password>
+        </server>
+        <server>
+            <id>inin-artifactory</id>
+            <username>inin-developer</username>
+            <password>{{ inin_repo_dev_password }}</password>
+        </server>
+        <server>
+          <id>my.datomic.com</id>
+          <username>zach.thomas@inin.com</username>
+          <password>{{ datomic_repo_password }}</password>
+        </server>
+    </servers>
+    <mirrors>
+      <mirror>
+        <id>inin-artifactory</id>
+        <name>ININ Artifactory Repository Manager</name>
+        <url>http://purecloud.artifactoryonline.com/purecloud/inin-maven-mirror</url>
+        <mirrorOf>*</mirrorOf>
+      </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+          <id>aws-token</id>
+          <activation>
+            <activeByDefault>true</activeByDefault>
+          </activation>
+        </profile>
+     </profiles>
+</settings>

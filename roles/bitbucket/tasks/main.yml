@@ -1,11 +1,18 @@
+- name: ensure httplib2 installed
+  pip: name=httplib2
+  become: yes
+  become_method: sudo
+
 - command: cat ~/.ssh/id_rsa.pub
   register: ssh_key
 
-- command: echo '{"accountname":"{{ bitbucket_username }}", "label":"{{ ansible_hostname }}", "key":"{{ ssh_key.stdout }}"}'
-  register: bitbucket_payload
-
 - name: push SSH public key to bitbucket
-  command: "curl -s -X POST -u '{{ bitbucket_username }}:{{ bitbucket_password }}' -H 'Content-Type: application/json' https://api.bitbucket.org/1.0/users/{{ bitbucket_username }}/ssh-keys -d '{{ bitbucket_payload.stdout }}'"
-  register: bitbucket_response
-
-- debug: msg={{ bitbucket_response.stdout }} 
+  uri:
+    url: "https://api.bitbucket.org/1.0/users/{{ bitbucket_username }}/ssh-keys"
+    method: POST
+    user: "{{ bitbucket_username }}"
+    password: "{{ bitbucket_password }}"
+    force_basic_auth: yes
+    body_format: json
+    status_code: 200, 400
+    body: "{\"accountname\":\"{{ bitbucket_username }}\", \"label\":\"{{ ansible_hostname }}\", \"key\":\"{{ ssh_key.stdout }}\"}"
