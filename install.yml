@@ -5,15 +5,29 @@
   - role: osxc.packages
     brew_taps:
     - caskroom/fonts
+    - railwaycat/homebrew-emacsmacport
     brew_packages:
     - git
     - zsh
-    - vim
+    - tree 
     - the_silver_searcher
-    - ctags
-    - reattach-to-user-namespace
+    - maven
+    - wget
     - tmux
+    - httpie
+    - boot-clj
+    - jq
     cask_packages:
-    - font-inconsolata-for-powerline
+    - font-anonymous-pro
     - iterm2
-    - macvim
+    - launchbar
+    - opera
+    - 1password
+    - amazon-music
+    - dropbox
+    - nvalt
+    - java
+    - intellij-idea
+  tasks:
+    - name: emacs-mac
+      homebrew: name=emacs-mac state=present install_options=with-spacemacs-icon

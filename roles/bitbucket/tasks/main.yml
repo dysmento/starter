@@ -1,0 +1,11 @@
+- command: cat ~/.ssh/id_rsa.pub
+  register: ssh_key
+
+- command: echo '{"accountname":"{{ bitbucket_username }}", "label":"{{ ansible_hostname }}", "key":"{{ ssh_key.stdout }}"}'
+  register: bitbucket_payload
+
+- name: push SSH public key to bitbucket
+  command: "curl -s -X POST -u '{{ bitbucket_username }}:{{ bitbucket_password }}' -H 'Content-Type: application/json' https://api.bitbucket.org/1.0/users/{{ bitbucket_username }}/ssh-keys -d '{{ bitbucket_payload.stdout }}'"
+  register: bitbucket_response
+
+- debug: msg={{ bitbucket_response.stdout }} 

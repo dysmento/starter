@@ -1,0 +1,12 @@
+---
+# this will set our preferences for the OS X dock
+- name: autohide
+  osx_defaults: domain=com.apple.dock key=autohide type=bool value=true state=present
+- name: largesize
+  osx_defaults: domain=com.apple.dock key=largesize type=float value=64 state=present
+- name: magnification
+  osx_defaults: domain=com.apple.dock key=magnification type=bool value=true state=present
+- name: mineffect
+  osx_defaults: domain=com.apple.dock key=mineffect type=string value=scale state=present
+- name: orientation
+  osx_defaults: domain=com.apple.dock key=orientation type=string value=right state=present

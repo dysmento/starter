@@ -1,0 +1,2 @@
+- name: generate ssh key pair
+  command: ssh-keygen -q -t rsa -N "" -C "zach.thomas@inin.com" -f "/Users/{{ ansible_user_id }}/.ssh/id_rsa" creates=/Users/{{ ansible_user_id }}/.ssh/id_rsa
