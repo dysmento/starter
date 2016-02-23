@@ -1,8 +1,8 @@
 - name: login item for Dropbox
-  shell: osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Users/zach/Applications/Dropbox.app", name:"Dropbox", hidden:true}'
+  shell: osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Users/{{ ansible_user_id }}/Applications/Dropbox.app", name:"Dropbox", hidden:true}'
 
 - name: login item for LaunchBar
-  shell: osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Users/zach/Applications/LaunchBar.app", name:"LaunchBar", hidden:true}'
+  shell: osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Users/{{ ansible_user_id }}/Applications/LaunchBar.app", name:"LaunchBar", hidden:true}'
 
 - name: login item for Viscosity
-  shell: osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Users/zach/Applications/Viscosity.app", name:"Viscosity", hidden:true}'
+  shell: osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Users/{{ ansible_user_id }}/Applications/Viscosity.app", name:"Viscosity", hidden:true}'
