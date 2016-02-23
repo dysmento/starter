@@ -11,7 +11,7 @@
   - role: osxc.packages
     brew_taps:
     - caskroom/fonts
-    - railwaycat/homebrew-emacsport
+    - railwaycat/homebrew-emacsmacport
     brew_packages:
     - git
     - zsh
