@@ -1,0 +1,1 @@
+- copy: src=tempcreds dest=/usr/local/bin/tempcreds
