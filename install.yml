@@ -17,6 +17,7 @@
     - zsh
     - tree 
     - the_silver_searcher
+    - awscli
     - maven
     - wget
     - tmux
