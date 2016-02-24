@@ -14,6 +14,10 @@
   tasks:
   - name: clone prezto to home directory
     git: repo=https://github.com/sorin-ionescu/prezto.git recursive=yes force=yes dest=/Users/{{ ansible_user_id }}/.zprezto
+  - name: install pygments for nice color cat
+    pip: name=pygments state=latest
+    become: yes
+    become_method: sudo
 
 - hosts: all
   roles:
