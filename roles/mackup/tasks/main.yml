@@ -1,4 +1,4 @@
 - homebrew: name=mackup state=present
-- copy: src=.mackup.cfg dest=/Users/{{ ansible_user_id }}/.mackup.cfg
+- copy: src=.mackup.cfg dest={{ ansible_user_dir }}/.mackup.cfg
 - name: restoring configurations from backup
-  command: mackup restore --force creates=/Users/{{ ansible_user_id }}/.spacemacs 
+  command: mackup restore --force creates={{ ansible_user_dir }}/.spacemacs 

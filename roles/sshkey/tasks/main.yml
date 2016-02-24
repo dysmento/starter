@@ -1,2 +1,2 @@
 - name: generate ssh key pair
-  command: ssh-keygen -q -t rsa -N "" -C "{{ inin_email }}" -f "/Users/{{ ansible_user_id }}/.ssh/id_rsa" creates=/Users/{{ ansible_user_id }}/.ssh/id_rsa
+  command: ssh-keygen -q -t rsa -N "" -C "{{ inin_email }}" -f "{{ ansible_user_dir }}/.ssh/id_rsa" creates={{ ansible_user_dir }}/.ssh/id_rsa

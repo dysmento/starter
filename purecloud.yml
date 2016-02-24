@@ -1,15 +1,19 @@
 ---
+# ensure that we have java upfront
+- hosts: all
+  roles:
+  - role: osxc.packages
+    cask_packages:
+    - java
+
 - hosts: all
   vars_files:
   - my_variables
   roles:
   - role: osxc.packages
-    cask_packages:
-    - java
     brew_packages:
     - maven
     - git
-    - openvpn
   - role: sshkey
   - role: bitbucket
   - role: purecloud
