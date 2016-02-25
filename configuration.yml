@@ -13,6 +13,7 @@
   - role: purecloud
   - role: maven
   - role: tempcreds
+  - role: spacemacs
   tasks:
   - name: clone prezto to home directory
     git: repo=https://github.com/sorin-ionescu/prezto.git recursive=yes force=yes dest={{ ansible_user_dir }}/.zprezto
@@ -22,4 +23,6 @@
     pip: name=pygments state=latest
     become: yes
     become_method: sudo
+  - name: download solarized
+    get_url: url=http://ethanschoonover.com/solarized/files/solarized.zip dest={{ ansible_user_dir }}/Downloads
 

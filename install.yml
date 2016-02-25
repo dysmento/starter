@@ -38,6 +38,7 @@
     - dropbox
     - nvalt
     - emacs-mac
+    - viscosity
     - intellij-idea
     - microsoft-office
   - role: yta.osx-mas

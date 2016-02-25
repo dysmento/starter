@@ -1,0 +1,4 @@
+- name: copy setIcon script
+  copy: src=setIcon.sh dest=/usr/local/bin/setIcon mode=0755
+- name: set spacemacs icon
+  shell: "setIcon {{ ansible_env['PWD'] }}/roles/spacemacs/files/spacemacs.icns {{ ansible_user_dir }}/Applications/Emacs.app/ creates={{ ansible_user_dir }}/Applications/Emacs.app/Icon?"
