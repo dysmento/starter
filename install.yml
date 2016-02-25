@@ -7,14 +7,18 @@
     - java
 
 - hosts: all
+  vars_files:
+  - my_variables
   roles:
   - role: osxc.packages
     brew_taps:
     - caskroom/fonts
     - railwaycat/homebrew-emacsmacport
+    - argon/mas
     brew_packages:
     - git
     - zsh
+    - mas
     - tree 
     - the_silver_searcher
     - awscli
@@ -36,3 +40,4 @@
     - emacs-mac
     - intellij-idea
     - microsoft-office
+  - role: yta.osx-mas
