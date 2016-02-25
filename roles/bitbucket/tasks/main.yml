@@ -3,8 +3,10 @@
   become: yes
   become_method: sudo
 
-- command: cat ~/.ssh/id_rsa.pub
+- name: reading SSH public key from ~/.ssh
+  command: cat ~/.ssh/id_rsa.pub
   register: ssh_key
+  changed_when: False
 
 - name: push SSH public key to bitbucket
   uri:
@@ -16,6 +18,8 @@
     body_format: json
     status_code: 200, 400
     body: "{\"accountname\":\"{{ bitbucket_username }}\", \"label\":\"{{ ansible_hostname }}\", \"key\":\"{{ ssh_key.stdout }}\"}"
+  register: bitbucket_response
+  changed_when: "bitbucket_response.status == 200"
 
 - name: clone the donut repo
   git: repo=git@bitbucket.org:inindca/donut.git accept_hostkey=yes dest=/Users/{{ ansible_user_id }}/dev/donut
