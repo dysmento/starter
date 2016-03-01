@@ -40,5 +40,5 @@
     - emacs-mac
     - viscosity
     - intellij-idea
-    - microsoft-office
+#   - microsoft-office
   - role: yta.osx-mas

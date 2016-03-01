@@ -1,0 +1,32 @@
+#!/bin/bash
+if [ $# -ne 3 ]
+then
+   echo "Usage: `basename $0` <arn:aws:iam::490606849374:mfa/your.name> <profile> <mfa code>
+
+Dependencies:
+         awscli: http://aws.amazon.com/cli/
+             jq: https://stedolan.github.io/jq/"
+   exit 1
+fi
+
+# we expect the [default] profile to be right at the top of the credentials file
+FIRST_PROFILE=`grep "\[.\+]" ~/.aws/credentials | head -n 1`
+if [ $FIRST_PROFILE != '[default]' ]
+then
+   echo "This script only works if the first profile in your ~/.aws/credentials file is [default]."
+   exit 1
+fi
+
+# call the AWS command to get a session token and exit on failure
+TOKEN_RESPONSE=`aws sts get-session-token --duration-seconds 36000 --serial-number $1 --profile $2 --token-code $3`
+if [ $? -ne 0 ]
+then
+    echo "Exiting."
+    exit 1
+fi
+
+# transform the JSON output to ini format and write the ~/.aws/credentials file
+echo $TOKEN_RESPONSE | jq -r '"[default]\nregion = us-east-1\naws_access_key_id = \(.Credentials.AccessKeyId)\naws_secret_access_key = \(.Credentials.SecretAccessKey)\naws_session_token = \(.Credentials.SessionToken)\n"' > /tmp/sts
+SECOND_PROFILE=`grep "\[.\+]" ~/.aws/credentials | tail -n +2 | head -n 1`
+grep -FA 1000 $SECOND_PROFILE ~/.aws/credentials >> /tmp/sts
+mv /tmp/sts ~/.aws/credentials
