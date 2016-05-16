@@ -8,7 +8,8 @@ starter
 2. Easy_install pip, and then pip install Ansible: `sudo easy_install pip; sudo pip install ansible` (or `sudo pip install --upgrade ansible` if Ansible has already been installed via pip and needs upgrading to 1.8+)
 3. While that's happening [clone this repo](https://github.com/dysmento/starter.git) 
 4. `cd starter`
-5. `ansible-playbook --ask-vault-pass --ask-become-pass purecloud.yml`
+5. `ansible-galaxy install -r requirements.yml`
+6. `ansible-playbook --ask-vault-pass --ask-become-pass purecloud.yml`
 
 ## Configuration
 You need to provide some parameters to the script. Replace `my_variables` in this project with your own file that looks like this:
