@@ -14,8 +14,10 @@
     brew_packages:
     - maven
     - git
+    - awscli
+    - jq
   - role: sshkey
-  - role: bitbucket
-  - role: purecloud
+#  - role: bitbucket
+#  - role: purecloud
   - role: maven
-  - role: tempcreds
+#  - role: tempcreds
