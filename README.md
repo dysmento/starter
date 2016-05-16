@@ -1,35 +1,39 @@
 starter
 =======
-
-An osxc playbook, ready to be forked !
-
-
-> **Warning:** This version of osxc is not compatible with the old one (called now legacy), you'll have to copy some old roles locally in order to make a smooth transition. On the other side, you can still use legacy and we will continue to accept your pull requests on legacy.
-
-## Introduction
-
-Welcome to osxc !
-
-osxc is a simple configuration tool for OS X (in fact, it just makes it easier for you to use ansible on OS X).
-
-You can reach our (temporarily not updated and old) [website](http://osxc.github.io) if you want to know more. But don't follow the instructions there to get started, just stay here for that !
-
 ## Get started
 
-> **Warning:** All of this is subject to change, just be sure you're able to reach this page to see the latest instructions when it'll be updated. Don't worry though, we will not change brutally the structure of your current repo (not like we did with legacy). All we are going to do is add a CLI tool.
 
-> **Additional Note:** If you're installing system-wide `sudo ansible-galaxy install -r requirements.yml` otherwise edit `ansible.cfg` and comment out `roles_path:./roles` to install the roles in your osxc.starter fork before running **Step 5**.
 
 1. Be sure to have the XCode Command-Line tools installed: `xcode-select --install`
 2. Easy_install pip, and then pip install Ansible: `sudo easy_install pip; sudo pip install ansible` (or `sudo pip install --upgrade ansible` if Ansible has already been installed via pip and needs upgrading to 1.8+)
-3. While that's happening [Fork this repo](https://github.com/osxc/starter/fork) and then clone your fork anywhere you want on your machine: `git clone https://github.com/<yourname>/starter.git ~/src/osxc; cd ~/src/osxc`
-4. Take a quick look at `configuration.yml` and `installation.yml` customizing to your liking.
-5. Start osxc with `ansible-galaxy install -r requirements.yml && ansible-playbook desktop.yml`
+3. While that's happening [clone this repo](https://github.com/dysmento/starter.git) 
+4. `cd starter`
+5. `ansible-playbook --ask-vault-pass --ask-become-pass purecloud.yml`
 
-At the end, you'll only need to repeat step 5.
+## Configuration
+You need to provide some parameters to the script. Replace `my_variables` in this project with your own file that looks like this:
+```
+---
+bitbucket_username: someuser 
+bitbucket_password: foopassword
+inin_email: first.last@inin.com
+inin_repo_dev_password: yet-another-password 
+aws_secret_access_key_inindca: blah 
+aws_access_key_id_inindca: blah
+aws_secret_access_key_inintca: blah
+aws_access_key_id_inintca: blah
+aws_secret_access_key_ininsca: blah
+aws_access_key_id_ininsca: blah
+osx_mas_account: something@me.com
+osx_mas_password: icloudpassword 
+osx_mas_applications:
+- name: Kuvva
+  id: 451557061
+osx_mas_upgrade: true
+```
+We use ansible vault to keep this file encrypted since it has _secrets_ in it:
 
-Now you're ready to further tweak the configuration we gave you. Have fun ! (You may want to read the [Ansible documentation](http://docs.ansible.com/index.html) in this case ...)
+    ansible-vault encrypt my_variables
 
-## Learn More
+And it'll ask you for a password. When you run `ansible-playbook`, it'll prompt you for you two passwords: the sudo password for your mac, and the vault password you just chose.
 
-If you want to get more documentation or just want to see what osxc can do for you, here's a [repository list on ansible galaxy](https://galaxy.ansible.com/list#/users/6499) where you can find all the publicly available roles for osxc.
