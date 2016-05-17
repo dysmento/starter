@@ -1,12 +1,13 @@
 starter
 =======
 ## Get started
-
+Before El Capitan, we used to use instructions like `sudo easy_install pip` and `sudo pip install ansible`. Now, though, there's this obstacle in the form of [System Integrity Protection](https://support.apple.com/en-us/HT204899). They're apparently trying to protect us from ourselves. Anyway, the easiest way to start now is to install Homebrew first, and use `brew install ansible`.
 
 
 1. Be sure to have the XCode Command-Line tools installed: `xcode-select --install`
-2. Easy_install pip, and then pip install Ansible: `sudo easy_install pip; sudo pip install ansible` (or `sudo pip install --upgrade ansible` if Ansible has already been installed via pip and needs upgrading to 1.8+)
-3. While that's happening [clone this repo](https://github.com/dysmento/starter.git) 
+2.`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` 
+3. `brew install ansible`
+3. `git clone https://github.com/dysmento/starter.git`
 4. `cd starter`
 5. `ansible-galaxy install -r requirements.yml`
 6. `ansible-playbook --ask-vault-pass --ask-become-pass purecloud.yml`
