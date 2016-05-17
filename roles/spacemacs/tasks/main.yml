@@ -1,3 +1,5 @@
+- name: clone spacemacs to home directory
+  git: repo=https://github.com/syl20bnr/spacemacs dest={{ ansible_user_dir }}/.emacs.d
 - name: copy setIcon script
   copy: src=setIcon.sh dest=/usr/local/bin/setIcon mode=0755
 - name: set spacemacs icon

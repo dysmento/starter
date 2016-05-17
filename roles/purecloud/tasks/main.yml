@@ -1,4 +1,5 @@
 - name: download PureCloud package
-  get_url: url=https://dhqbrvplips7x.cloudfront.net/directory-mac/1.7.214/purecloud-mac-1.7.214.pkg dest={{ ansible_user_dir }}/Downloads/purecloud-mac-1.7.214.pkg
+  get_url: url=https://dhqbrvplips7x.cloudfront.net/directory-mac/1.8.258/purecloud-mac-1.8.258.pkg dest={{ ansible_user_dir }}/Downloads/purecloud-mac.pkg
 - name: install PureCloud app
-  command: sudo installer -pkg {{ ansible_user_dir }}/Downloads/purecloud-mac-1.7.214.pkg -target / creates=/Applications/PureCloud.app
+  become: yes 
+  command: installer -pkg {{ ansible_user_dir }}/Downloads/purecloud-mac.pkg -target / creates=/Applications/PureCloud.app

@@ -1,16 +1,9 @@
 ---
-# ensure that we have java upfront
-- hosts: all
-  roles:
-  - role: osxc.packages
-    cask_packages:
-    - java
-
 - hosts: all
   vars_files:
   - my_variables
   roles:
-  - role: osxc.packages
+  - role: brew 
     brew_taps:
     - caskroom/fonts
     - railwaycat/homebrew-emacsmacport
@@ -30,15 +23,15 @@
     - jq
     cask_packages:
     - font-anonymous-pro
-    - iterm2
-    - launchbar
-    - opera
-    - 1password
-    - amazon-music
-    - dropbox
-    - nvalt
-    - emacs-mac
-    - viscosity
-    - intellij-idea
+#   - iterm2
+#   - launchbar
+#   - opera
+#   - 1password
+#   - amazon-music
+#   - dropbox
+#   - nvalt
+#   - emacs-mac
+#   - viscosity
+#   - intellij-idea
 #   - microsoft-office
   - role: yta.osx-mas

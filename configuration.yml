@@ -6,7 +6,7 @@
   roles:
   - role: sshkey
   - role: dock
-  - role: mackup
+# - role: mackup
   - role: bitbucket
   - role: capslock
   - role: loginitems
@@ -17,8 +17,6 @@
   tasks:
   - name: clone prezto to home directory
     git: repo=https://github.com/sorin-ionescu/prezto.git recursive=yes force=yes dest={{ ansible_user_dir }}/.zprezto
-  - name: clone spacemacs to home directory
-    git: repo=https://github.com/syl20bnr/spacemacs dest={{ ansible_user_dir }}/.emacs.d
   - name: install pygments for nice color cat
     pip: name=pygments state=latest
     become: yes

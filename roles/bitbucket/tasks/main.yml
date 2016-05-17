@@ -22,7 +22,7 @@
   changed_when: "bitbucket_response.status == 200"
 
 - name: clone the donut repo
-  git: repo=git@bitbucket.org:inindca/donut.git accept_hostkey=yes dest=/Users/{{ ansible_user_id }}/dev/donut
+  git: repo=git@bitbucket.org:inindca/donut.git accept_hostkey=yes dest={{ ansible_user_dir }}/dev/donut
 
 - name: clone the donut-common repo
-  git: repo=git@bitbucket.org:inindca/donut-common.git accept_hostkey=yes dest=/Users/{{ ansible_user_id }}/dev/donut-common
+  git: repo=git@bitbucket.org:inindca/donut-common.git accept_hostkey=yes dest={{ ansible_user_dir }}/dev/donut-common
