@@ -21,8 +21,6 @@
   register: bitbucket_response
   changed_when: "bitbucket_response.status == 200"
 
-- name: clone the donut repo
-  git: repo=git@bitbucket.org:inindca/donut.git accept_hostkey=yes dest={{ ansible_user_dir }}/dev/donut
-
-- name: clone the donut-common repo
-  git: repo=git@bitbucket.org:inindca/donut-common.git accept_hostkey=yes dest={{ ansible_user_dir }}/dev/donut-common
+- name: clone ININ repos
+  git: repo=git@bitbucket.org:inindca/{{ item }}.git accept_hostkey=yes dest={{ ansible_user_dir }}/dev/{{ item }}
+  with_items: "{{ inin_repos }}"

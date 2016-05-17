@@ -8,6 +8,10 @@
   - role: dock
 # - role: mackup
   - role: bitbucket
+    inin_repos:
+    - donut
+    - donut-common
+    - donut-events
   - role: capslock
   - role: loginitems
   - role: purecloud
