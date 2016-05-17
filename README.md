@@ -5,12 +5,12 @@ Before El Capitan, we used to use instructions like `sudo easy_install pip` and 
 
 
 1. Be sure to have the XCode Command-Line tools installed: `xcode-select --install`
-2.`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` 
+2. `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` 
 3. `brew install ansible`
-3. `git clone https://github.com/dysmento/starter.git`
-4. `cd starter`
-5. `ansible-galaxy install -r requirements.yml`
-6. `ansible-playbook --ask-vault-pass --ask-become-pass purecloud.yml`
+4. `git clone https://github.com/dysmento/starter.git`
+5. `cd starter`
+6. `ansible-galaxy install -r requirements.yml`
+7. `ansible-playbook --ask-vault-pass --ask-become-pass purecloud.yml`
 
 ## Configuration
 You need to provide some parameters to the script. Replace `my_variables` in this project with your own file that looks like this:
