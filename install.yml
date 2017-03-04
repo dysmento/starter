@@ -24,14 +24,3 @@
     cask_packages:
     - font-anonymous-pro
     - emacs-mac
-#   - iterm2
-#   - launchbar
-#   - opera
-#   - 1password
-#   - amazon-music
-#   - dropbox
-#   - nvalt
-#   - emacs-mac
-#   - viscosity
-#   - intellij-idea
-#   - microsoft-office

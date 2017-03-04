@@ -1,0 +1,19 @@
+---
+- hosts: all
+  roles:
+  - role: brew
+    brew_taps: []
+    brew_packages: []
+    cask_packages:
+      - iterm2
+      - launchbar
+      - google-chrome
+      - 1password
+      - amazon-music
+      - dropbox
+      - nvalt
+      - viscosity
+      - intellij-idea
+      - microsoft-office
+  - role: loginitems
+
