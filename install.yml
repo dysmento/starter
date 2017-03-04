@@ -2,12 +2,8 @@
 - hosts: all
   vars_files:
   - my_variables
-  vars:
-    java_subversion: 111
-    java_set_javahome: true
   roles:
   - sdkman
-  - williamyeh.oracle-java
   - role: brew 
     brew_taps:
     - caskroom/fonts
@@ -27,6 +23,7 @@
     - jq
     cask_packages:
     - font-anonymous-pro
+    - emacs-mac
 #   - iterm2
 #   - launchbar
 #   - opera

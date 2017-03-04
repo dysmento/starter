@@ -1,4 +1,7 @@
 - name: Install SDKMAN
   shell: curl -s http://get.sdkman.io | bash
          creates="{{ ansible_user_dir }}/.sdkman"
+- name: Install latest Java 8
+  shell: . ~/.sdkman/bin/sdkman-init.sh && echo y | sdk install java `sdk java list | grep 8u | head -1`
+         creates=~/.sdkman/candidates/java
 
