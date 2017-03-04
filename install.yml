@@ -8,11 +8,9 @@
     brew_taps:
     - caskroom/fonts
     - railwaycat/homebrew-emacsmacport
-    - argon/mas
     brew_packages:
     - git
     - zsh
-    - mas
     - tree 
     - the_silver_searcher
     - awscli

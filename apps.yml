@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  vars_files:
+  - my_variables
   roles:
   - role: brew
     brew_taps: []
@@ -15,5 +17,6 @@
       - viscosity
       - intellij-idea
       - microsoft-office
+  - role: fubarhouse.macstore
   - role: loginitems
 
