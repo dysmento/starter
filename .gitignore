@@ -1,3 +1,4 @@
 .DS_Store
-roles/osxc.*
-roles/yta.osx-mas
+*.retry
+roles/willieamyeh.oracle-java
+

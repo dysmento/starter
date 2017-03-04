@@ -12,7 +12,7 @@
     - donut
     - donut-common
     - donut-events
-  - role: capslock
+# - role: capslock
   - role: loginitems
   - role: purecloud
   - role: maven

@@ -1,4 +1,8 @@
 - copy: src=sts dest=/usr/local/bin/sts mode=0755
 - copy: src=tempcreds dest=/usr/local/bin/tempcreds mode=0755
+- file:
+    path: "{{ ansible_user_dir }}/.aws"
+    state: directory
+    mode: 0755
 - name: copy AWS credentials file
   template: src=credentials.j2 dest={{ ansible_user_dir }}/.aws/credentials

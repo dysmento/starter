@@ -1,0 +1,4 @@
+- name: Install SDKMAN
+  shell: curl -s http://get.sdkman.io | bash
+         creates="{{ ansible_user_dir }}/.sdkman"
+

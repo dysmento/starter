@@ -2,7 +2,12 @@
 - hosts: all
   vars_files:
   - my_variables
+  vars:
+    java_subversion: 111
+    java_set_javahome: true
   roles:
+  - sdkman
+  - williamyeh.oracle-java
   - role: brew 
     brew_taps:
     - caskroom/fonts
@@ -15,7 +20,6 @@
     - tree 
     - the_silver_searcher
     - awscli
-    - maven
     - wget
     - tmux
     - httpie
@@ -34,4 +38,3 @@
 #   - viscosity
 #   - intellij-idea
 #   - microsoft-office
-  - role: yta.osx-mas

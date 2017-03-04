@@ -1,3 +1,7 @@
+- name: Install homebrew
+  shell: >
+         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+         creates=/usr/local/Cellar
 - name: Install homebrew taps
   homebrew_tap: tap={{ item }} state=present
   with_items: "{{ brew_taps }}"
