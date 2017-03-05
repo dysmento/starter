@@ -2,6 +2,12 @@
 - hosts: all
   vars_files:
   - my_variables
+  tasks:
+  - name: Install Emacs
+    homebrew_cask: 
+      name: emacs-mac
+      state: present
+      install_options: with-spacemacs-icon
   roles:
   - sdkman
   - role: brew 
@@ -19,6 +25,9 @@
     - httpie
     - boot-clj
     - jq
+    - maven
     cask_packages:
     - font-anonymous-pro
-    - emacs-mac
+    - font-source-code-pro
+    - font-source-code-pro-for-powerline
+
