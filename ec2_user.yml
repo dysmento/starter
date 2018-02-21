@@ -1,0 +1,40 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Install the_silver_searcher
+    yum:
+      name: the_silver_searcher
+      state: latest
+  - name: Install tree
+    yum:
+      name: tree
+      state: latest
+  - name: sdkman facts
+    set_fact:
+      sdkman_dir: '{{ sdkman_dir | default("/home/ec2-user/.sdkman") }}'
+  - name: Download sdkman
+    get_url:
+        url: https://get.sdkman.io
+        dest: /tmp/sdkman_script
+  - name: Install sdkman
+    environment:
+      SDKMAN_DIR: '{{ sdkman_dir }}'
+    command: bash /tmp/sdkman_script
+    args:
+      creates: '{{ sdkman_dir }}/bin/sdkman-init.sh'
+  - name: Install Java
+    environment:
+      SDKMAN_DIR: '{{ sdkman_dir }}'
+    shell: >-
+      source {{ sdkman_dir }}/bin/sdkman-init.sh &&
+      yes 'y' | sdk install java 9.0.4-oracle creates={{ sdkman_dir }}/candidates/java
+    args:
+      executable: /bin/bash
+  - name: Install maven
+    environment:
+      SDKMAN_DIR: '{{ sdkman_dir }}'
+    shell: >-
+      source {{ sdkman_dir }}/bin/sdkman-init.sh &&
+      yes 'y' | sdk install maven creates={{ sdkman_dir }}/candidates/maven
+    args:
+      executable: /bin/bash
